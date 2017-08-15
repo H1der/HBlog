@@ -47,7 +47,10 @@
                     <td><?php echo $v['cat_id']; ?></td>
                     <td><?php echo $v['catname']; ?></td>
                     <td><span class="badge"><?php echo $v['num']; ?></span></td>
-                    <td>删除</td>
+                    <td>
+                        <?php echo "<a href='catdel.php?cat_id=$v[cat_id]'>";?>删除</a>|
+                        <?php echo "<a href='catedit.php?cat_id=$v[cat_id]'>";?>编辑</a>
+                    </td>
                 </tr>
                 <?php } ?>
             </table>

@@ -1,8 +1,10 @@
-<meta charset="set8">
 <?php
+
 //连接数据库
 $conn = mysqli_connect('localhost', 'root', '', 'blog');
-mysqli_query($conn,'set name utf8');
+
+//设置写入字符集
+mysqli_query($conn,"set character set 'utf8'");
 
 $sql = 'select * from cat';
 $rs = mysqli_query($conn,$sql);
