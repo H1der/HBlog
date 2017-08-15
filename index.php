@@ -7,5 +7,5 @@
  * Time: 16:02
  */
 
-include("./view/front/index.html");
+include('./view/front/index.html');
 ?>
