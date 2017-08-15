@@ -38,22 +38,18 @@
             <table>
                 <tr>
                     <td>序号</td>
-                    <td>栏目名称</td>
+                    <td>栏目</td>
                     <td>xxx</td>
                     <td>操作</td>
                 </tr>
+                <?php foreach($cat as $v) {?>
                 <tr>
-                    <td>1</td>
-                    <td>心情随笔</td>
-                    <td><span class="badge">12</span></td>
+                    <td><?php echo $v['cat_id']; ?></td>
+                    <td><?php echo $v['catname']; ?></td>
+                    <td><span class="badge"><?php echo $v['num']; ?></span></td>
                     <td>删除</td>
                 </tr>
-                <tr>
-                    <td>1</td>
-                    <td>心情随笔</td>
-                    <td><span class="badge">12</span></td>
-                    <td>删除</td>
-                </tr>
+                <?php } ?>
             </table>
         </div>
     </div>
