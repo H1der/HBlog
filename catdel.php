@@ -1,6 +1,6 @@
 <?php
 
-    //把地址栏的post cat_id获取过来
+    //把地址栏的 cat_id获取过来
     $cat_id = $_GET['cat_id'];
 
     //连接数据库
