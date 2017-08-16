@@ -1,0 +1,10 @@
+<?php
+/**
+ * Created by PhpStorm.
+ * User: Hider
+ * Date: 2017/8/17
+ * Time: 0:05
+ */
+header('Content-type:text/html;charset=utf8');
+define('ROOT',dirname(__DIR__));
+require (ROOT.'/lib/mysql.php');

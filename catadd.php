@@ -1,8 +1,8 @@
 <?php
-require ('./lib/mysql.php');
+require('./lib/init.php');
 //判断表单是否有 post 数据
 if (empty($_POST)) {
-    include('./view/admin/catadd.html');
+    include(ROOT . '/view/admin/catadd.html');
 } else {
     //如果有 post ,先判断传过来的 catname 是否为空
     $cat['catname'] = trim($_POST['catname']);

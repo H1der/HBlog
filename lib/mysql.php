@@ -13,9 +13,10 @@ function mConn()
     //静态变量似的mConn在同一页面 数据库值只连接一次
     static $conn = null;
     if ($conn === null) {
-        $conn = mysqli_connect('localhost', 'root', '', 'blog');
-        mysqli_query($conn, 'set names utf8');
-        mysqli_query($conn, "set character set 'utf8'");
+        $cfg = require(ROOT.'/lib/config.php');
+        $conn = mysqli_connect($cfg['host'], $cfg['user'], $cfg['password'], $cfg['db']);
+        mysqli_query($conn, 'set names'.$cfg['charset']);
+        mysqli_query($conn, 'set character set'.$cfg['charset']);
     }
     return $conn;
 }
