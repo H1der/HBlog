@@ -80,7 +80,7 @@ function mGetOne($sql)
 function mExec($table, $data, $act = 'insert', $where = '0')
 {
     if ($act == 'insert') {
-        $sql = 'insert into' . $table . '(';
+        $sql = "insert into $table (";
         $sql .= implode(',', array_keys($data)) . ") values ('";
         $sql .= implode("','", array_values($data)) . "')";
         return mQuery($sql);
@@ -93,13 +93,13 @@ function mExec($table, $data, $act = 'insert', $where = '0')
         $sql .= 'where' . $where;
         return mQuery($sql);
     }
-
 }
 
 /**
  * 返回最近一次insert长生的主键值
  * @return int
  */
-function getListId(){
+function getListId()
+{
     return mysqli_insert_id(mConn());
 }
