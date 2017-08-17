@@ -10,5 +10,4 @@ return array(
     'user'=>'root',
     'password'=>'',
     'db'=>'blog',
-    'charset'=>'utf8'
 );

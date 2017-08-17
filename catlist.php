@@ -1,13 +1,8 @@
 <?php
-
-//连接数据库
-$conn = mysqli_connect('localhost', 'root', '', 'blog');
-
-//设置写入字符集
-mysqli_query($conn,"set character set 'utf8'");
+include ('./lib/init.php');
 
 $sql = 'select * from cat';
-$rs = mysqli_query($conn,$sql);
+$rs = mQuery($sql);
 
 if (!$rs){
     echo false;
@@ -21,4 +16,4 @@ if (!$rs){
 //    print_r($cat);
 }
 
-include ('./view/admin/catlist.html');
+include (ROOT.'/view/admin/catlist.html');

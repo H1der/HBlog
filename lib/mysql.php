@@ -3,7 +3,6 @@
  * mysql.php mysql操作的系列函数
  * @author Hider
  */
-
 /**
  * 连接数据库
  * @return resource 成功返回一个资源
@@ -15,8 +14,8 @@ function mConn()
     if ($conn === null) {
         $cfg = require(ROOT . '/lib/config.php');
         $conn = mysqli_connect($cfg['host'], $cfg['user'], $cfg['password'], $cfg['db']);
-        mysqli_query($conn, 'set names' . $cfg['charset']);
-        mysqli_query($conn, 'set character set' . $cfg['charset']);
+        mysqli_query($conn, 'set names utf8');
+//        mysqli_query($conn, 'set character set' . $cfg['charset']);
     }
     return $conn;
 }
@@ -46,8 +45,8 @@ function mLog($log)
 {
     $path = ROOT . '/log/' . date('Ymd', time()) . 'txt';
     //格林威治时间+8小时=北京时间
-    $head = '--------------------------------' . "\n" . date('Y/m/d H:i:s', time()+8*3600) . "\n";
-    file_put_contents($path, $head.$log."\n" . "\n", FILE_APPEND);
+    $head = '--------------------------------' . "\n" . date('Y/m/d H:i:s', time() + 8 * 3600) . "\n";
+    file_put_contents($path, $head . $log . "\n" . "\n", FILE_APPEND);
 }
 
 /**
@@ -61,17 +60,15 @@ function mGetAll($sql)
     if (!$rs) {
         return false;
     } else {
-        $arr = array();
-        while ($row = mysqli_fetch_assoc($rs)) {
-            $arr[] = $row;
+        while ($row[] = mysqli_fetch_assoc($rs)) {
+//            $arr[] = $row;
         }
     }
-    return $arr;
+    return $row;
 }
 
 //$sql = 'select count(*) from cat';
 //echo mGetOne($sql);
-
 /**
  * 查询select语句并返回一个单元
  * @param string $sql select语句

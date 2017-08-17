@@ -45,10 +45,10 @@
                 <div class="form-group">
                     <label>栏目:</label>
                     <p>
-                        <select name="cat_name">
-                            <option value="">人生</option>
-                            <option value="">哲学</option>
-                            <option value="">技术</option>
+                        <select name="cat_id">
+                            <?php foreach($cat as $v){ ?>
+                            <option value="<?php echo '$v[cat_id]'; ?>"><?php echo $v['catname'];?></option>
+                            <?php }?>
                         </select>
                     </p>
                 </div>
