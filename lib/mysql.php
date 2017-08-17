@@ -13,10 +13,10 @@ function mConn()
     //静态变量似的mConn在同一页面 数据库值只连接一次
     static $conn = null;
     if ($conn === null) {
-        $cfg = require(ROOT.'/lib/config.php');
+        $cfg = require(ROOT . '/lib/config.php');
         $conn = mysqli_connect($cfg['host'], $cfg['user'], $cfg['password'], $cfg['db']);
-        mysqli_query($conn, 'set names'.$cfg['charset']);
-        mysqli_query($conn, 'set character set'.$cfg['charset']);
+        mysqli_query($conn, 'set names' . $cfg['charset']);
+        mysqli_query($conn, 'set character set' . $cfg['charset']);
     }
     return $conn;
 }
@@ -29,7 +29,25 @@ function mConn()
  */
 function mQuery($sql)
 {
-    return mysqli_query(mConn(), $sql);
+    $rs = mysqli_query(mConn(), $sql);
+    if ($rs === false) {
+        mLog($sql . "\n" . mysqli_error());
+        return $rs;
+    }
+    mLog($sql);
+    return $rs;
+}
+
+/**
+ * 记录执行的送起来以及出错信息
+ * @param $log 记录的信息
+ */
+function mLog($log)
+{
+    $path = ROOT . '/log/' . date('Ymd', time()) . 'txt';
+    //格林威治时间+8小时=北京时间
+    $head = '--------------------------------' . "\n" . date('Y/m/d H:i:s', time()+8*3600) . "\n";
+    file_put_contents($path, $head.$log."\n" . "\n", FILE_APPEND);
 }
 
 /**

@@ -13,7 +13,7 @@ if (empty($_POST)) {
     }
 
     //检测栏目是否存在
-    $sql = "SELECT count(*) FROM cat WHERE catname = '$cat[catname]'";
+    $sql = "select count(*) from cat where catname = '$cat[catname]'";
 //    print_r(mQuery($sql));exit();
     $rs = mQuery($sql);
 //    print_r(mysqli_fetch_row($rs));exit();
