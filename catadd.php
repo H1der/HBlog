@@ -18,8 +18,7 @@ if (empty($_POST)) {
     $rs = mQuery($sql);
 //    print_r(mysqli_fetch_row($rs));exit();
     if (mysqli_fetch_row($rs)[0] != 0) {
-        echo '栏目已经存在';
-        exit();
+        succ ('栏目已经存在');
     }
 //    print_r(mExec('cat',$Cat));exit();
 
@@ -27,7 +26,7 @@ if (empty($_POST)) {
     if (!mExec('cat',$cat)) {
         echo mysqli_error(mConn());
     } else {
-        echo '添加成功';
+        succ( '添加成功');
     }
 
 }

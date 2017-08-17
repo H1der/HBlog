@@ -35,16 +35,15 @@
         </aside>
     </div>
     <div id="rside">
-        <?php if($res==='succ'){ ?>
-        <?php echo '<div class="succ">'.$msg.'
+        <?php if($result==='succ'){ ?>
+        '
+        <div class="succ"><?php echo $res; ?>
+        </div>
+        <?php } else if($result=='fail'){ ?>
+        <div class="danger"><?php echo $res;?>
+        </div>
+        <?php } ?>
     </div>
-    '?>
-    <?php } else if($res==='error'){ ?>
-    <?php echo '<div class="danger">'.$msg.'
-</div>
-'?>
-<?php } ?>
-</div>
 </div>
 <footer>
     Copyright &copy; 2015 · GeneratePress · WordPress

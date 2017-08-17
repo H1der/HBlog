@@ -43,7 +43,7 @@ function mQuery($sql)
  */
 function mLog($log)
 {
-    $path = ROOT . '/log/' . date('Ymd', time()) . 'txt';
+    $path = ROOT . '/log/' . date('Ymd', time()) . '.txt';
     //格林威治时间+8小时=北京时间
     $head = '--------------------------------' . "\n" . date('Y/m/d H:i:s', time() + 8 * 3600) . "\n";
     file_put_contents($path, $head . $log . "\n" . "\n", FILE_APPEND);
@@ -60,11 +60,12 @@ function mGetAll($sql)
     if (!$rs) {
         return false;
     } else {
-        while ($row[] = mysqli_fetch_assoc($rs)) {
-//            $arr[] = $row;
+        $arr = array();
+        while ($row = mysqli_fetch_assoc($rs)) {
+            $arr[] = $row;
         }
     }
-    return $row;
+    return $arr;
 }
 
 //$sql = 'select count(*) from cat';

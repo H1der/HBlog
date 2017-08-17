@@ -15,8 +15,7 @@ if (mGetOne($sql) == 0) {
 }
 if (empty($_POST)) {
     $sql = 'select catname from cat where cat_id=' . $cat_id;
-    $rs = mQuery($sql);
-    $cat =mysqli_fetch_assoc($rs);
+    $cat =mGetAll($sql);
 //    print_r($cat);exit();
     require(ROOT.'/view/admin/cataedit.html');
 } else {

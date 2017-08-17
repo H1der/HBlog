@@ -1,18 +1,18 @@
 <?php
 /**
- * @param string $msg 成功返回的信息
+ * 成功返回的信息
  */
-function succ($msg='成功'){
-    $res = 'success';
+function succ($res){
+    $result = 'succ';
     include (ROOT.'/view/admin/info.html');
     exit;
 }
 /**
- * @panram string $msg 失败返回的报错信息
+ * 失败返回的报错信息
  */
 
-function error($msg='失败'){
-    $res='fail';
+function error($res){
+    $result = 'fail';
     include (ROOT.'/view/admin/info.html');
     exit;
 }
