@@ -69,36 +69,36 @@ function getIp(){
 }
 
 /**
- * 按日期创建存储目录
+ * 生成随机字符串
+ * @param int $num 生成的随机字符串的个数
+ * @return str 生成的随机字符串
+ */
+function randStr($num=6) {
+    $str = str_shuffle('abcedfghjkmnpqrstuvwxyzABCEDFGHJKMNPQRSTUVWXYZ23456789');
+    return substr($str, 0 , $num);
+}
+
+//echo randStr();
+
+/**
+ * 创建目录 ROOT.'/upload/2015/01/25/qwefas.jpg'
  *
  */
-function createDir(){
-    $path = '/upload'.date('Y/m/d');
-
-    $abs = ROOT . $path;
-    if(is_dir(abs)||mkdir($abs,007,true)){
+function createDir() {
+    $path = '/upload/'.date('Y/m/d');
+    $fpath = ROOT . $path;
+    if(is_dir($fpath) || mkdir($fpath , 0777 , true)) {
         return $path;
-    }else{
+    } else {
         return false;
     }
 }
 
 /**
- * @param int $length
- * @return bool|string
- * 生成随机字符串
- */
-function randStr($length = 6){
-    $str = str_shuffle('qwertyuipasdfghjklzxcvbnmQWERTYUIPASDFGHJKLZXCVBNM23456789');
-    $str = substr($str,0,$length);
-    return $str;
-}
-
-/**
- * @param $name
- * @return string
  * 获取文件后缀
+ * @param str $filename 文件名
+ * @return str 文件的后缀名,且带点.
  */
-function getExit($name){
-    return strrchr($name,'.');
+function getExt($filename) {
+    return strrchr($filename, '.');
 }

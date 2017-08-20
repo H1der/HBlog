@@ -25,7 +25,14 @@ if (empty($_POST)) {
     if (empty($art['content'])) {
         error('内容不能为空');
     }
-
+    //如果有上传图片,且上传成功
+    //判断是否有图片上传 且 error 是否为0
+    if( !($_FILES['pic']['name'] == '' ) && $_FILES['pic']['error'] == 0) {
+        $filename = createDir() . '/' . randStr() . getExt($_FILES['pic']['name']);
+        if(move_uploaded_file($_FILES['pic']['tmp_name'], ROOT .  $filename)){
+            $art['pic'] = $filename;
+        }
+    }
 //文章发布时间
     $art['pubtime'] = time();
 
@@ -58,7 +65,7 @@ if (empty($_POST)) {
                     if (mQuery($sql)){
                         $sql = "update cat set num=num-1 where cat_id=$art[cat_id]";
                         mQuery($sql);
-                        error('文章添加失败');
+                        error('标签插入失败');
                     }
                 }
             }

@@ -68,6 +68,22 @@ function mGetAll($sql)
     return $arr;
 }
 
+/**
+ * select 取出一行数据
+ *
+ * @param str $sql 待查询的sql语句
+ * @return arr/false 查询成功 返回一个一维数组
+ */
+
+function mGetRow($sql) {
+    $rs = mQuery($sql);
+    if(!$rs) {
+        return false;
+    }
+
+    return mysqli_fetch_assoc($rs);
+}
+
 //$sql = 'select count(*) from cat';
 //echo mGetOne($sql);
 /**
@@ -102,12 +118,12 @@ function mExec($table, $data, $act = 'insert', $where = '0')
         $sql .= implode("','", array_values($data)) . "')";
         return mQuery($sql);
     } else if ($act == 'update') {
-        $sql = 'update' . $table . 'set';
+        $sql = "update $table set ";
         foreach ($data as $k => $v) {
             $sql .= $k . "='" . $v . "',";
         }
         $sql = rtrim($sql, ',');
-        $sql .= 'where' . $where;
+        $sql .= 'where ' . $where;
         return mQuery($sql);
     }
 }
@@ -120,3 +136,4 @@ function getListId()
 {
     return mysqli_insert_id(mConn());
 }
+
