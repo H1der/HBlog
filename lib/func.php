@@ -160,3 +160,42 @@ function makeThumb($ori, $sw = 200, $sh = 200)
     imagedestroy($small);
     return $path;
 }
+
+/**
+ * 转移字符
+ * 对post,get,cookie数组进行转义
+ */
+function _addslashes($arr)
+{
+    foreach ($arr as $k => $v) {
+        if (is_string($v)) {
+            $arr[$k] = addslashes($v);
+        } else if (is_array($v)) {
+            $arr[$k] = _addslashes($v);
+        }
+    }
+    return $arr;
+}
+
+/**
+ * md5加密用户名和盐
+ * @param str $name 用户名
+ * @return str 返回加密后的字符串
+ */
+function ccode($name)
+{
+    $cfg = include(ROOT . '/lib/config.php');
+    $salt = $cfg['salt'];
+    return md5($name . '|' . $salt);
+}
+
+/**
+ * 检测是否登录
+ */
+function acc()
+{
+    if (!isset($_COOKIE['name']) || !isset($_COOKIE['ccode'])) {
+        return false;
+    }
+    return $_COOKIE['ccode'] === ccode($_COOKIE['name']);
+}

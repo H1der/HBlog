@@ -10,4 +10,5 @@ return array(
     'user'=>'root',
     'password'=>'',
     'db'=>'blog',
+    'salt' => 'L^&%TDJ}',
 );

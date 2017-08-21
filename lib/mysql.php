@@ -30,7 +30,7 @@ function mQuery($sql)
 {
     $rs = mysqli_query(mConn(), $sql);
     if ($rs === false) {
-        mLog($sql . "\n" . mysqli_error());
+        mLog($sql . "\n" . mysqli_error($rs));
         return $rs;
     }
     mLog($sql);
