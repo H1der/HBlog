@@ -23,7 +23,7 @@ $page = getPage($num , $curr, $cnt);
 
 
 //查询所有文章
-$sql = "select art_id,title,content,pubtime,comm,catname from art inner join cat on art.cat_id=cat.cat_id where 1" . $where . ' order by art_id desc limit ' . ($curr-1)*$cnt . ',' . $cnt;
+$sql = "select art_id,title,content,pubtime,comm,thumb,catname from art inner join cat on art.cat_id=cat.cat_id where 1" . $where . ' order by art_id desc limit ' . ($curr - 1) * $cnt . ',' . $cnt;
 $art = mGetAll($sql);
 
 

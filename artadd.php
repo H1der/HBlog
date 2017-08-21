@@ -31,6 +31,8 @@ if (empty($_POST)) {
         $filename = createDir() . '/' . randStr() . getExt($_FILES['pic']['name']);
         if(move_uploaded_file($_FILES['pic']['tmp_name'], ROOT .  $filename)){
             $art['pic'] = $filename;
+            //缩略图
+            $art['thumb'] = makeThumb($filename);
         }
     }
 //文章发布时间

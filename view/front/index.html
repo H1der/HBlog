@@ -33,6 +33,9 @@
                 <a class="comment" href="#"><?php echo $a['comm'];?>条评论</a>
             </div>
             <div class="entry_content">
+                <?php if($a['thumb']){?>
+                <img src="<?php echo $a['thumb'];?>" alt="">
+                <?php }?>
                 <?php echo $a['content'];?>
             </div>
         </article>
