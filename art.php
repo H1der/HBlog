@@ -10,7 +10,7 @@ if (empty($art)) {
     exit;
 }
 $sql = 'select * from cat';
-$Cat = mGetAll($sql);
+$cats = mGetAll($sql);
 
 //如果post非空,则有评论
 if (!empty($_POST)) {
@@ -25,6 +25,15 @@ if (!empty($_POST)) {
 
     //插入的评论返回结果 如果返回false 则发布评论失败
     $rs = mExec('comment', $comm);
+    if ($rs) {
+        //评论发布成功 将art表的comm+1
+        $sql = "update art set comm=comm+1 where art_id=$art_id";
+        mQuery($sql);
+
+        //跳转到上个页面
+        $ref = $_SERVER['HTTP_REFERER'];
+        header("Location: $ref");
+    }
 
     //每增加一条评论,art_表的comm字段+1
     $sql = 'update art set comm=comm+1 where art_id='.$art_id;

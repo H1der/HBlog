@@ -3,24 +3,23 @@
 <head>
     <meta charset="UTF-8">
     <title>Document</title>
-<link rel="stylesheet" href="./css/reset.css">
-<link rel="stylesheet" href="./css/index.css">
-<link rel="stylesheet" href="./css/art.css">
+    <link rel="stylesheet" href="./css/reset.css">
+    <link rel="stylesheet" href="./css/index.css">
+    <link rel="stylesheet" href="./css/art.css">
 </head>
 <body>
-    <header>
-        <h1>十八哥的Blog</h1>
-        <h4>乘风行,无惧</h4>
-    </header>
-    <nav>
-        <ul>
-            <li><a href="">导航1</a></li>
-            <li><a href="">导航2</a></li>
-            <li>
-                <a href="">导航3</a></li>
-            <li><a href="">导航4</a></li>
-        </ul>
-    </nav>
+<header>
+    <h1>Hider的Blog</h1>
+    <h4>愿使岁月静好,现世安稳.</h4>
+</header>
+<nav>
+    <ul>
+        <li><a href="index.php">首页</a></li>
+        <?php foreach($cats as $c){?>
+        <li><a href="index.php?cat_id=<?php echo $c['cat_id'];?>"><?php echo $c['catname'];?></a></li>
+        <?php }?>
+    </ul>
+</nav>
     <div id="main">
         <div id="lside">
             <article>
@@ -34,9 +33,9 @@
                 </div>
                 <div class="entry_content">
                     <?php if($art['pic']){?>
-                    <?php echo $art['content'];?>
                     <img src="<?php echo $art['pic'];?>" alt="">
                     <?php }?>
+                    <?php echo $art['content'];?>
                 </div>
             </article>
             <div id="comments">
@@ -80,45 +79,25 @@
                 </form>
             </aside>
             <aside>
-                <h4>测试标题</h4>
+                <h4>栏目列表</h4>
                 <ul>
-                    <li><a href="">文章标题</a>&nbsp;(1)</li>
-                    <li><a href="">文章标题</a>&nbsp;(3)</li>
-                    <li><a href="">文章标题</a>&nbsp;(5)</li>
-                    <li><a href="">文章标题</a>&nbsp;(3)</li>
+                    <?php foreach($cats as $c){?>
+                    <li><a href="index.php?cat_id=<?php echo $c['cat_id'];?>"><?php echo $c['catname'];?></a></li>
+                    <?php }?>
                 </ul>
             </aside>
             <aside>
-                <h4>测试标题</h4>
+                <h4>菜单</h4>
                 <ul>
-                    <li><a href="">文章标题1</a></li>
-                    <li><a href="">文章标题2</a></li>
-                    <li><a href="">文章标题3</a></li>
-                    <li><a href="">文章标题4</a></li>
-                </ul>
-            </aside>
-            <aside>
-                <h4>测试标题</h4>
-                <ul>
-                    <li><a href="">文章标题1</a></li>
-                    <li><a href="">文章标题2</a></li>
-                    <li><a href="">文章标题3</a></li>
-                    <li><a href="">文章标题4</a></li>
-                </ul>
-            </aside>
-            <aside>
-                <h4>测试标题</h4>
-                <ul>
-                    <li><a href="">文章标题1</a></li>
-                    <li><a href="">文章标题2</a></li>
-                    <li><a href="">文章标题3</a></li>
-                    <li><a href="">文章标题4</a></li>
+                    <li><a href="login.php">登录</a></li>
+                    <li><a href="#">注册</a></li>
+                    <li><a href="">关于HBlog</a></li>
                 </ul>
             </aside>
         </div>
     </div>
-    <footer>
-        Copyright &copy; 2015 · GeneratePress · WordPress
-    </footer>
+<footer>
+    Copyright &copy; 2017 · 自豪的采用 · HBlog
+</footer>
 </body>
 </html>
